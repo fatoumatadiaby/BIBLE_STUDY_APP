@@ -5,4 +5,8 @@ if ActiveRecord::Migrator.needs_migration?
 end
 
 run ApplicationController
+
+use InterpretationsController
+use PrayersController
+
 use UsersController
