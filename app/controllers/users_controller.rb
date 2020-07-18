@@ -10,24 +10,24 @@ class UsersController < ApplicationController
   end
 
   post '/signup' do
-    if params[:password] == params[:confirm_password]
-        @user = User.new(username: params[:username], password: params[:password], first_name: params[:first_name], last_name: params[last_name])
-        @user.save
+     @user = User.new(username: params[:username], password: params[:password], first_name: params[:first_name], last_name: params[last_name])
+      if @user.save
         session[:user_id] = @user.id
         redirect to '/users/profile'
       else
        flash[:error] = "the details inputted are invalid please try again!"
-       redirect to '/users/signup'
+       erb :'/signup'
      end
  end
 
   post '/login' do
-      @user = User.find_by(username: params[:username], password: params[:password])
-    if user && user.authenticate(params[:username][:password])
+      @user = User.find_by_username(params[:user][:username])
+    if @user && @user.authenticate(params[:user][:password])
       session[:user_id] = @user.id 
       redirect '/users/profile'
     else
-      redirect to '/'
+      flash[:error] = "the details inputted are invalid please try again!"
+      redirect to '/login'
     end
   end
  
@@ -36,9 +36,6 @@ class UsersController < ApplicationController
       erb :'/users/user_profile'
   end
 
-  post '/user/profile' do
-    redirect to '/user/profile'
-  end
    
   
  
