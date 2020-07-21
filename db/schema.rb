@@ -11,22 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200717161321) do
+ActiveRecord::Schema.define(version: 20200721142913) do
 
-  create_table "interpretations", force: :cascade do |t|
+  create_table "journals", force: :cascade do |t|
     t.date     "date"
-    t.integer  "user_id"
-    t.integer  "verse_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "prayers", force: :cascade do |t|
-    t.date     "date"
-    t.integer  "user_id"
-    t.integer  "verse_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "interpretation"
+    t.string   "prayer"
+    t.string   "title"
+    t.string   "user_id"
+    t.string   "verse_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "users", force: :cascade do |t|

@@ -1,4 +1,12 @@
 
+(1..10).to_a.each do |num|
+ Verse.create(book_name: "",chapter_number: "", verse_number: "", verse:"")
+end 
+
+(1..10).to_a.each do |num|
+ Journal.create(date: "", title: "", interpretation: "", prayer: "")
+
+
 <%verse.each do |i,letters|%>
 <% verse.split("n.") %>
 <% until verse.include?(i) %>

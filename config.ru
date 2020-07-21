@@ -7,8 +7,8 @@ end
 
 use Rack::MethodOverride
 
-use InterpretationsController
-use PrayersController
+
+use JournalsController
 use UsersController
 use VersesController
 run ApplicationController

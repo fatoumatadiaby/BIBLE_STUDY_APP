@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
-   has_many :verses
-    has_many :prayers, through: :verses
-    has_many :interpretations, through: :verses
+    has_many :verses
+    has_many :journals
+   
     
     has_secure_password
    
