@@ -1,5 +1,5 @@
 require './config/environment'
-
+require 'rack-flash'
 class ApplicationController < Sinatra::Base
 
   configure do
@@ -7,6 +7,7 @@ class ApplicationController < Sinatra::Base
     set :views, 'app/views'
     enable :sessions
     set :session_secret, ENV['SINATRA_SECRET']
+    
   end
 
   get "/" do
@@ -24,10 +25,10 @@ class ApplicationController < Sinatra::Base
     !!session[:user_id]
    end
   
-  #  def login_error
-  #   flash[:error] = "Please Login"
-  #   redirect to "/"
-  #  end
+   def login_error
+    flash[:error] = "Please Login"
+    redirect to "/"
+   end
   
    def current_user
     User.find_by_id(session[:user_id])

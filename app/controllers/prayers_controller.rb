@@ -1,16 +1,15 @@
 class PrayersController < ApplicationController
-
+  use Rack::Flash
   
-  # get "/prayers" do
-  #   @prayers = current_user.prayers
-
-  #   erb :'prayers/index'
-  # end
+  get "/prayers" do
+   @prayers = current_user.prayers
+    erb :'prayers/index'
+   end
   
-  # get "/prayers/new" do
+  get "/prayers/new" do
    
-  #   erb :'/verses/new'
-  # end
+    erb :'/verses/new'
+  end
 
   
   # post "/prayers" do

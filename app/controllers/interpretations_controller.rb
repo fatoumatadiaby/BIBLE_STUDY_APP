@@ -1,5 +1,5 @@
 class InterpretationsController < ApplicationController
-
+  use Rack::Flash
  
   # get "/interpretations" do
   #   @interpretations = current_user.interpretation

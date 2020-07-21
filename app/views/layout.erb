@@ -18,13 +18,15 @@
     <div class ='wrapper'>
      <nav class="black darken-2">
       <ul class="top right">
-       <% unless logged_in? %>
+       <%unless logged_in?%>
         <li><a href="/signup">Create Account</a></li>
         <li><a href="/login">Login</a></li>
-       <% else %>
-      <li><%= current_user.first_name%></li>
-     <li><a href="/logout">Logout</a></li>
-    <% end %>
+       <% else%>
+       <li><a href="/verses">Verses</a></li>
+       <li><a href="/prayers">My Prayers</a></li>
+       <li><a href="/interpretations">My Interpretations</a></li>
+       <li><a href="/logout">Logout</a></li>
+    <%end%>
    </ul>
  </div>
      

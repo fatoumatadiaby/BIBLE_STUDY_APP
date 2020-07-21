@@ -1,0 +1,13 @@
+<h1>Book of Matthew</h1>
+<h4>select chapter you would like to read</h4>
+
+<% chapter = 0 %>
+<% while chapter < 29 %>
+ <% chapter += 1 %>
+ <h3><%=chapter%></h3>
+ <% if chapter <=2%>
+ <li><a href="/verses/chapter"><%=chapter%></a></li>
+ <%else%>
+  <%chapter%>
+<% end %>
+<% end %>
