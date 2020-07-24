@@ -1,37 +1,54 @@
 class JournalsController < ApplicationController
 
   get "/journals" do
-       @journals = Journal.all 
+       @journals = Journal.all
       erb :"/journals/index"
   end
 
   
   get "/journals/new" do
-    erb :"/journals/new.html"
+    @journal = Journal.new 
+    erb :"/journals/new"
   end
 
-  # POST: /journals
   post "/journals" do
+    @journal = Journal.new(params[:title], params[:date], params[:prayer], params[:interpretation])
+    @verse = verse.new(params[:book_name], params[:chapter_number],params[:verse_number], params[:verse] )
+    @journal.save
+    @verse.save
+    if  @journal.save && @verse.save
     redirect "/journals"
+    else
+      erb :"/journals/new"
+    end
   end
 
-  # GET: /journals/5
+  
   get "/journals/:id" do
-    erb :"/journals/show.html"
+    @verse = Verse.find_by_id(params[:id])
+    @journal = Journal.find_by_id(params[:id])
+    if @journal 
+      erb :"/journals/show"
+    else
+      redirect '/journals'
+    end
   end
 
-  # GET: /journals/5/edit
+  
   get "/journals/:id/edit" do
-    erb :"/journals/edit.html"
+    @journal = Journal.find_by_id(params[:id])
+     erb :"/journals/edit"
   end
 
-  # PATCH: /journals/5
+ 
   patch "/journals/:id" do
     redirect "/journals/:id"
   end
 
-  # DELETE: /journals/5/delete
+  
   delete "/journals/:id/delete" do
-    redirect "/journals"
+      @journal = Journal.find_by_id(params[:id])
+      @journal.destroy
+      redirect "/journals"
   end
 end

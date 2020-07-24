@@ -1,0 +1,22 @@
+<h1><%=@journal.title%> !</h1>
+
+
+<p><%= @journal.date %></p>
+<p><h5>Verse:</h5><%=@verse.verse%></p>
+<p><h5>Prayer:</h5><%= @journal.prayer %></p>
+<p><h5>Interpretation:</h5><%= @journal.interpretation %></p>
+
+
+<form action="/journals/<%= @journal.id%>/edit" method="post">
+    <input id="hidden" type="hidden" name="_method" value="patch">
+    <input type="text" ...>
+</form>
+ 
+
+
+<form action="/journals/<%= @journal.id %>/delete" method="post">
+<input id="hidden" type="hidden" name="_method" value="DELETE">
+<input type="submit" value="delete">
+</form>
+
+

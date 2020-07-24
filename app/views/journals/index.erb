@@ -1,9 +1,11 @@
-<h1>This is your journals home page.</h1>
-where all journals are listed
+<h1><%=current_user.first_name%>'s Journal entry's !</h1>
 
-<% @journals.each do |journals| %>
-<p>Date:<%=Journal.date %></p>
-<p>Title:<%=Journal.title %></p>
-<p>Interpretation:<%=Journal.interpretation %></p>
-<p>Prayer:<%=Journal.prayer %></p>
+
+<% @journals.each do |journal| %>
+  <p><a href="/journals/<%= journal.id %>"><%= journal.title %></a></p>
 <% end %>
+
+
+
+
+</form>
