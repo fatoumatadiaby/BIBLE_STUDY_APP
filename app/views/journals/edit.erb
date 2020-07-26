@@ -1,9 +1,52 @@
-<h1>Insert the form to edit an instance of your model here.</h1>
-<form action="/journals/<%= @journal.id%>" method="POST">
- <input id="hidden" type="hidden" name="_method" value="patch">
- <input type="text">
 
+<form action="/verses/<%=@verse.id%>/journals/<%=@journal.id%>" method="POST">
+   <input id="hidden" type="hidden" name="_method" value="patch">
+    <br>
+    <br> 
+ <div class="input-field">
+  <label for="title">Title</label>
+  <input type="textarea" name="title" id="title" value="<%=@journal.title%>">
+</div>
+    <br>
+ <div class="input-field">
+ <label for="date">Date: (00/00/0000)</label>
+  <%=@journal.date%>
+</div>
+ <div class="input-field">
+  <label for="book_name">Book:</label>
+   <%= @verse.book_name %>
+</div>
 
+ <div class="input-field">
+  <label for="chapter_number">Chapter number:</label>
+  <%=@verse.chapter_number %>
+</div>
+
+ <div class="input-field">
+  <label for="verse_number">Verse number:</label>
+  <%=@verse.verse_number %>
+</div>
+
+ <div class="input-field">
+  <label for="verse">Verse:</label>
+  <%=@verse.verse %>
+</div>
+<br>
+
+ <div class="input-field">
+  <label for="interpretation">interpretation:</label>
+  <input type="textbox" name='interpretation' id='interpretation' value="<%=@journal.interpretation %>">
+</div>
+<br>
+
+ <div class="input-field">
+<label for="prayer">Prayer:</label>
+<input type="textarea" name="prayer" id="prayer" value="<%=@journal.prayer%>">
+</div> 
+<br>
+
+<button type="submit" class="btn waves-effect waves-light">Update<i class="material-icons right">send</i>
+</button>
 
 
 

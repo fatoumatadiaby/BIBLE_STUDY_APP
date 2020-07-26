@@ -1,7 +1,7 @@
 class JournalsController < ApplicationController
 
   get "/journals" do
-       @journals = Journal.all
+       @journals = current_user.journals
       erb :"/journals/index"
   end
 
@@ -10,40 +10,52 @@ class JournalsController < ApplicationController
     @journal = Journal.new 
     erb :"/journals/new"
   end
+ 
+  get "/verses/:verse_id/journals/new" do
+    @verse = Verse.find_by_id(params[:verse_id])
+    @journal = Journal.new 
+    erb :"/journals/new"
+  end
 
-  post "/journals" do
-    @journal = Journal.new(params[:title], params[:date], params[:prayer], params[:interpretation])
-    @verse = verse.new(params[:book_name], params[:chapter_number],params[:verse_number], params[:verse] )
-    @journal.save
-    @verse.save
-    if  @journal.save && @verse.save
-    redirect "/journals"
+  post "/verses/:verse_id/journals" do
+    @verse = Verse.find_by_id(params[:verse_id])
+    @journal = current_user.journals.build(title: params[:title], date: params[:date], prayer: params[:prayer], interpretation: params[:interpretation], verse_id: params[:verse_id])
+    if  @journal.save
+      redirect "/journals"
     else
       erb :"/journals/new"
     end
   end
 
-  
-  get "/journals/:id" do
-    @verse = Verse.find_by_id(params[:id])
-    @journal = Journal.find_by_id(params[:id])
-    if @journal 
+   get "/journals/:id" do
+     @verse = Verse.find_by_id(params[:verse_id])
+     @journal = Journal.find_by(id: params[:id])
+    
       erb :"/journals/show"
-    else
-      redirect '/journals'
-    end
   end
-
-  
+   
   get "/journals/:id/edit" do
-    @journal = Journal.find_by_id(params[:id])
-     erb :"/journals/edit"
-  end
+     @verse = Verse.find_by_id(params[:verse_id])
+     @journal = Journal.find_by_id(params[:id])
+     erb :"journals/edit"
+    
+   end
+  
 
- 
+
   patch "/journals/:id" do
-    redirect "/journals/:id"
-  end
+    @verse = Verse.find_by_id(params[:verse_id])
+    @journal = Journal.find_by(id: params[:id])
+    if @journal.update(
+     title: params[:title],
+     prayer: params[:prayer],
+     interpretation: params[:interpretation]
+     )
+     redirect "/journals/:id"
+    else
+     erb :"/journals/edit"
+   end
+ end
 
   
   delete "/journals/:id/delete" do

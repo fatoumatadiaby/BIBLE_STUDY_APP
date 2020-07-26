@@ -1,14 +1,7 @@
 <h2>Matthew</h2>
 
 <% @verse.each do |verse| %>
-  <p><a href="/verses/<%= verse.id %>"><%= verse.verse_number %>: <%= verse.verse %></a></p>
+  <p><a href="/verses/<%= verse.id %>/journals/new"><%= verse.verse_number %>: <%= verse.verse %></a></p>
 <% end %>
 
-
-<body>
-<a href="/journals/new">
-   <input type="button" value="New Journal Entry"/>
-</a>
-
-  </body>
   </div>
