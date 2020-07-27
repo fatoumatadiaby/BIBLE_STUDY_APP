@@ -1,7 +1,8 @@
+<!DOCTYPE html>
+<html>
 <h2>Matthew</h2>
 
 <% @verse.each do |verse| %>
   <p><a href="/verses/<%= verse.id %>/journals/new"><%= verse.verse_number %>: <%= verse.verse %></a></p>
 <% end %>
-
-  </div>
+</html>

@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html>
 <h1>Book of Matthew</h1>
 <h4>select chapter you would like to read</h4>
 
@@ -5,9 +7,11 @@
 <% while chapter < 29 %>
  <% chapter += 1 %>
  <h3><%=chapter%></h3>
-<% if chapter == 5 %>
- <li><a href="/verses/chapter"><%=chapter%></a></li>
+<%  if chapter == 5 %>
+<h3><a href="/verses/chapter"><%=chapter%></a></h3>
  <%else%>
   <%chapter%>
 <% end %>
 <% end %>
+
+</html>

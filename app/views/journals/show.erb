@@ -1,21 +1,38 @@
+<!DOCTYPE html>
+<html>
+<div style="padding: 15px; margin-top: 25px; margin-bottom: 40px; margin-left: 20px">
+ <h3><%=@journal.title%></h3>
+  <br>
+   <p><h5>Date:</h5><%= @journal.date %></p>
+   <p><h5><%=@journal.verse.book_name%> <%=@journal.verse.chapter_number%>:<%=@journal.verse.verse_number%></h5></p>
+     <%=@journal.verse.verse%>
+   <p><h5>Prayer:</h5><%= @journal.prayer %></p>
+   <p><h5>Interpretation:</h5><%= @journal.interpretation %></p>
+  <br>
+ <br>
+</div>
 
-<h1><%=@journal.title%> !</h1>
+ <nav>
+    <div class="nav-wrapper">
+     <div class="card black">
+      <div class="center">
+          <a href="/journals/<%= @journal.id%>/edit">Edit</a>
+        </div>
+      </div>
+    </div>
+  </nav>
 
 
-<p><h5>Date:</h5><%= @journal.date %></p>
-<p><h5><%=@journal.verse.book_name%> <%=@journal.verse.chapter_number%>:<%=@journal.verse.verse_number%></h5></p>
-<%=@journal.verse.verse%>
-<p><h5>Prayer:</h5><%= @journal.prayer %></p>
-<p><h5>Interpretation:</h5><%= @journal.interpretation %></p>
-
-
-
- <a href="/journals/<%= @journal.id%>/edit">Edit</a>
-
-
-<form action="/journals/<%= @journal.id %>/delete" method="post">
-<input id="hidden" type="hidden" name="_method" value="delete">
-<input type="submit" value="delete">
-</form>
-
-
+<nav>
+ <div class="nav-wrapper">
+  <div class="card black">
+   <div class="center">
+    <form action="/journals/<%= @journal.id %>/delete" method="post">
+     <input id="hidden" type="hidden" name="_method" value="delete">
+     <input type="submit" value="delete">
+    </form>
+   </div>
+  </div>
+ </div>
+</nav>
+</html>

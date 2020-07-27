@@ -1,55 +1,56 @@
+<!DOCTYPE html>
+<html>
 
-<form action="/verses/<%=@verse.id%>/journals/<%=@journal.id%>" method="POST">
-   <input id="hidden" type="hidden" name="_method" value="patch">
-    <br>
-    <br> 
- <div class="input-field">
+<form action="/verses/<%=@verse.id%>/journals/<%=@journal.id%>"method="post">
+<input type="hidden" name="_method" value="patch">
+
+<div>
   <label for="title">Title</label>
   <input type="textarea" name="title" id="title" value="<%=@journal.title%>">
 </div>
     <br>
- <div class="input-field">
+ 
+<div>
  <label for="date">Date: (00/00/0000)</label>
   <%=@journal.date%>
 </div>
- <div class="input-field">
+ 
+<div>
   <label for="book_name">Book:</label>
    <%= @verse.book_name %>
 </div>
 
- <div class="input-field">
-  <label for="chapter_number">Chapter number:</label>
-  <%=@verse.chapter_number %>
+<div>
+ <label for="chapter_number">Chapter number:</label>
+ <%=@verse.chapter_number %>
 </div>
 
- <div class="input-field">
-  <label for="verse_number">Verse number:</label>
+
+<div>
+ <label for="verse_number">Verse number:</label>
   <%=@verse.verse_number %>
 </div>
 
- <div class="input-field">
+<div>
   <label for="verse">Verse:</label>
   <%=@verse.verse %>
 </div>
 <br>
 
- <div class="input-field">
+<div>
   <label for="interpretation">interpretation:</label>
   <input type="textbox" name='interpretation' id='interpretation' value="<%=@journal.interpretation %>">
 </div>
 <br>
 
- <div class="input-field">
-<label for="prayer">Prayer:</label>
-<input type="textarea" name="prayer" id="prayer" value="<%=@journal.prayer%>">
+<div>
+ <label for="prayer">Prayer:</label>
+ <input type="textarea" name="prayer" id="prayer" value="<%=@journal.prayer%>">
 </div> 
 <br>
 
-<button type="submit" class="btn waves-effect waves-light">Update<i class="material-icons right">send</i>
+<button type="submit" class="btn waves-effect waves-light">Update<i class="material-icons right"></i>
 </button>
 
-
-
-
-
 </form>
+</html>

@@ -35,23 +35,21 @@ class JournalsController < ApplicationController
   end
    
   get "/journals/:id/edit" do
-     @verse = Verse.find_by_id(params[:verse_id])
+     @verse = Verse.find_by_id(params[:id])
      @journal = Journal.find_by_id(params[:id])
-     erb :"journals/edit"
+     erb :"/journals/edit"
     
    end
   
-
-
-  patch "/journals/:id" do
+  patch "/verses/:verse_id/journals/:id" do 
     @verse = Verse.find_by_id(params[:verse_id])
-    @journal = Journal.find_by(id: params[:id])
+    @journal = Journal.find_by_id(params[:id])
     if @journal.update(
      title: params[:title],
      prayer: params[:prayer],
      interpretation: params[:interpretation]
      )
-     redirect "/journals/:id"
+     redirect "/journals"
     else
      erb :"/journals/edit"
    end

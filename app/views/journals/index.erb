@@ -1,11 +1,25 @@
-<h1><%=current_user.first_name%>'s Journal entry's !</h1>
+  <!DOCTYPE html>
+<html>
+
+<div style="padding: 10px; margin-top: 25px; margin-bottom: 25px">
+<h3><%=current_user.first_name%>'s Journal entry's !</h3>
 
 
-<% @journals.each do |journal| %>
-  <p><a href="/journals/<%= journal.id %>"><%= journal.title %></a></p>
-<% end %>
+<div class="row">
+<p><% @journals.each do |journal| %>
+  <div class="col s5 m6">
+      <div class="card green lighten-5">
+        <div class="card-content black-text">
+          <span class="card-title"><%=journal.title%></span>
+          <p>Date: <%=journal.date%></p>
+        </div>
+        <div class="card-action">
+           <p><a href="/journals/<%= journal.id %>">view entry</a></p>
 
-
-
-
-</form>
+        </div>
+      </div>
+    </div>
+ 
+  <% end %></p> 
+  </div>
+  </html>
