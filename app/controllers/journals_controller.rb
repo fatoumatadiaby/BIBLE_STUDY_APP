@@ -27,24 +27,28 @@ class JournalsController < ApplicationController
     end
   end
 
-   get "/journals/:id" do
+   get "/verses/:verse_id/journals/:id" do
      @verse = Verse.find_by_id(params[:verse_id])
      @journal = Journal.find_by(id: params[:id])
     
       erb :"/journals/show"
   end
    
-  get "/journals/:id/edit" do
-     @verse = Verse.find_by_id(params[:id])
+  get "/verses/:verse_id/journals/:id/edit" do
+     @verse = Verse.find_by_id(params[:verse_id])
      @journal = Journal.find_by_id(params[:id])
-     erb :"/journals/edit"
+     if current_user == @journal.user_id
+       erb :"/journals/edit"
+     else
+       redirect :'journals'
+     end 
     
    end
   
   patch "/verses/:verse_id/journals/:id" do 
     @verse = Verse.find_by_id(params[:verse_id])
     @journal = Journal.find_by_id(params[:id])
-    if @journal.update(
+    if current_user == @journal.user_id && @journal.update(
      title: params[:title],
      prayer: params[:prayer],
      interpretation: params[:interpretation]
@@ -53,12 +57,16 @@ class JournalsController < ApplicationController
     else
      erb :"/journals/edit"
    end
+  end
  end
 
   
   delete "/journals/:id/delete" do
       @journal = Journal.find_by_id(params[:id])
+     if currrent_user == @journal.user_id
       @journal.destroy
+      redirect "/journals"
+    else
       redirect "/journals"
   end
 end

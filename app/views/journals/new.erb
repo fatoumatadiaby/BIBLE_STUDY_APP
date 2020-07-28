@@ -3,12 +3,12 @@
 <form action="/verses/<%=@verse.id%>/journals" method="post">
  <div>
   <label for="title">Title</label>
-  <input type="textarea" name="title" id="title" value="<%=@journal.title%>">
+  <input type="textarea" name="title" id="title" value="<%=@journal.title%>" required>
 </div>
 <br>
  <div>
  <label for="date">Date: (00/00/0000)</label>
-  <input type="textarea" name="date" id="date" value="<%=@journal.date%>">
+  <input type="textarea" name="date" id="date" value="<%=@journal.date%>" required>
 </div>
  <div>
   <label for="book_name">Book:</label>
@@ -33,13 +33,13 @@
 
  <div>
   <label for="interpretation">interpretation:</label>
-  <input type="textbox" name='interpretation' id='interpretation' value="<%=@journal.interpretation %>">
+  <input type="textbox" name='interpretation' id='interpretation' value="<%=@journal.interpretation %>" required>
 </div>
 <br>
 
  <div>
 <label for="prayer">Prayer:</label>
-<input type="textarea" name="prayer" id="prayer" value="<%=@journal.prayer%>">
+<input type="textarea" name="prayer" id="prayer" value="<%=@journal.prayer%>" required>
 </div> 
 <br>
 
