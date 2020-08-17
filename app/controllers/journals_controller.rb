@@ -26,24 +26,27 @@ class JournalsController < ApplicationController
       erb :"/journals/new"
     end
   end
-
-   get "/verses/:verse_id/journals/:id" do
+  get "/verses/:verse_id/journals/:id/edit" do
+     @verse = Verse.find_by_id(params[:verse_id])
+     @journal = Journal.find_by_id(params[:id])
+     if current_user == @journal.user
+       erb :"/journals/edit"
+     else
+       redirect 'journals'
+     end 
+   end
+     
+   
+  get "/verses/:verse_id/journals/:id" do
      @verse = Verse.find_by_id(params[:verse_id])
      @journal = Journal.find_by(id: params[:id])
     
       erb :"/journals/show"
   end
    
-  get "/verses/:verse_id/journals/:id/edit" do
-     @verse = Verse.find_by_id(params[:verse_id])
-     @journal = Journal.find_by_id(params[:id])
-     if current_user == @journal.user_id
-       erb :"/journals/edit"
-     else
-       redirect :'journals'
-     end 
+
     
-   end
+  
   
   patch "/verses/:verse_id/journals/:id" do 
     @verse = Verse.find_by_id(params[:verse_id])

@@ -21,14 +21,10 @@ class ApplicationController < Sinatra::Base
 
 
  helpers do
-  #  def logged_in?
-  #   !!session[:user_id]
-  #  end
+   def logged_in?
+    !!session[:user_id]
+   end
   
-  #  def login_error
-  #   flash[:error] = "Please Login"
-  #   redirect to "/"
-  #  end
   
    def current_user
     User.find_by_id(session[:user_id])
